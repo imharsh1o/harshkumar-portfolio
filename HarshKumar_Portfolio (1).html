@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Harsh Kumar — Product Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:#0d1117;--ink2:#3d4451;--ink3:#8892a4;
+    --bg:#f7f6f3;--surface:#ffffff;
+    --accent:#1a56db;--accent2:#0e3fa8;
+    --green:#0d7a5f;--green-bg:#e8f5f1;
+    --amber:#92400e;--amber-bg:#fef3c7;
+    --border:rgba(0,0,0,0.08);
+    --mono:'DM Mono',monospace;--sans:'Sora',sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.6;}
+  nav{position:sticky;top:0;z-index:100;background:rgba(247,246,243,0.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-name{font-size:15px;font-weight:600;letter-spacing:-0.02em;}
+  .nav-links{display:flex;gap:28px;}
+  .nav-links a{font-size:13px;color:var(--ink3);text-decoration:none;transition:color 0.15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .hero{max-width:860px;margin:0 auto;padding:80px 2rem 60px;}
+  .hero-tag{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:500;color:var(--accent);background:rgba(26,86,219,0.08);padding:4px 12px;border-radius:4px;margin-bottom:20px;letter-spacing:0.04em;}
+  h1.hero-title{font-size:clamp(36px,6vw,58px);font-weight:700;line-height:1.1;letter-spacing:-0.03em;margin-bottom:20px;}
+  h1.hero-title span{color:var(--accent);}
+  .hero-sub{font-size:17px;color:var(--ink2);font-weight:300;max-width:560px;line-height:1.7;margin-bottom:32px;}
+  .hero-pills{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;}
+  .pill{font-size:13px;padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface);color:var(--ink2);}
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn-primary{font-family:var(--sans);font-size:14px;font-weight:600;padding:10px 22px;border-radius:8px;background:var(--accent);color:#fff;border:none;cursor:pointer;text-decoration:none;transition:background 0.15s;}
+  .btn-primary:hover{background:var(--accent2);}
+  .btn-secondary{font-family:var(--sans);font-size:14px;font-weight:500;padding:10px 22px;border-radius:8px;background:transparent;color:var(--ink);border:1px solid var(--border);cursor:pointer;text-decoration:none;transition:background 0.15s;}
+  .btn-secondary:hover{background:var(--surface);}
+  .metrics-strip{background:var(--ink);color:#fff;padding:28px 2rem;}
+  .metrics-inner{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+  .metric-item{text-align:center;padding:0 24px;border-right:1px solid rgba(255,255,255,0.12);}
+  .metric-item:last-child{border-right:none;}
+  .metric-num{font-size:30px;font-weight:700;letter-spacing:-0.03em;}
+  .metric-num span{color:#60a5fa;}
+  .metric-label{font-size:12px;color:rgba(255,255,255,0.5);margin-top:4px;font-weight:300;}
+  section{max-width:860px;margin:0 auto;padding:64px 2rem;}
+  .section-eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--ink3);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
+  h2.section-title{font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:32px;}
+  .project-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin-bottom:24px;}
+  .project-header{padding:28px 28px 20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:16px;}
+  .project-badge{font-family:var(--mono);font-size:11px;font-weight:500;padding:3px 10px;border-radius:4px;background:var(--green-bg);color:var(--green);white-space:nowrap;flex-shrink:0;}
+  .project-title{font-size:22px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;}
+  .project-sub{font-size:14px;color:var(--ink3);font-weight:300;}
+  .project-body{padding:24px 28px;}
+  .psec{font-size:11px;font-weight:600;color:var(--ink3);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:12px;}
+  .project-desc{font-size:15px;color:var(--ink2);line-height:1.7;margin-bottom:24px;}
+  .pipeline{display:flex;align-items:center;flex-wrap:wrap;margin-bottom:8px;}
+  .pipe-step{display:flex;align-items:center;gap:8px;background:rgba(26,86,219,0.06);border:1px solid rgba(26,86,219,0.15);border-radius:6px;padding:8px 14px;font-size:13px;font-weight:500;color:var(--accent2);margin-bottom:8px;}
+  .pipe-arrow{font-size:14px;color:var(--ink3);margin:0 4px 8px;flex-shrink:0;}
+  .pipe-num{font-family:var(--mono);font-size:10px;font-weight:500;background:var(--accent);color:#fff;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:24px;}
+  .metric-card{background:var(--bg);border-radius:10px;padding:16px;display:flex;flex-direction:column;gap:4px;}
+  .mc-label{font-size:12px;color:var(--ink3);}
+  .mc-before{font-size:13px;color:#b91c1c;font-weight:500;text-decoration:line-through;}
+  .mc-after{font-size:18px;font-weight:700;color:var(--green);letter-spacing:-0.02em;}
+  .outcome-box{background:linear-gradient(135deg,#0d1117 0%,#1a2332 100%);border-radius:12px;padding:20px 24px;display:flex;gap:16px;align-items:flex-start;}
+  .outcome-icon{font-size:24px;flex-shrink:0;}
+  .outcome-title{font-size:15px;font-weight:600;color:#fff;margin-bottom:4px;}
+  .outcome-desc{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.6;}
+  .outcome-num{font-size:22px;font-weight:700;color:#60a5fa;margin-top:6px;}
+  .decisions{display:flex;flex-direction:column;gap:10px;}
+  .decision-row{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-radius:8px;background:var(--bg);border:1px solid var(--border);}
+  .decision-tag{font-family:var(--mono);font-size:10px;font-weight:500;padding:2px 8px;border-radius:3px;white-space:nowrap;flex-shrink:0;margin-top:2px;}
+  .tag-pivot{background:var(--amber-bg);color:var(--amber);}
+  .tag-reject{background:#fee2e2;color:#991b1b;}
+  .tag-focus{background:var(--green-bg);color:var(--green);}
+  .decision-text{font-size:13px;color:var(--ink2);line-height:1.5;}
+  .decision-text strong{color:var(--ink);font-weight:600;}
+  .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
+  .skill-icon{font-size:22px;margin-bottom:10px;}
+  .skill-title{font-size:14px;font-weight:600;margin-bottom:6px;}
+  .skill-desc{font-size:13px;color:var(--ink3);line-height:1.5;}
+  .stack-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .stack-badge{font-family:var(--mono);font-size:12px;padding:5px 12px;border-radius:6px;background:var(--surface);border:1px solid var(--border);color:var(--ink2);}
+  .stack-badge.hl{background:rgba(26,86,219,0.06);border-color:rgba(26,86,219,0.2);color:var(--accent2);}
+  .contact-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:32px;}
+  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:24px 0;}
+  .contact-item{display:flex;flex-direction:column;gap:4px;}
+  .contact-label{font-size:11px;color:var(--ink3);font-family:var(--mono);text-transform:uppercase;letter-spacing:0.06em;}
+  .contact-val{font-size:14px;color:var(--ink);font-weight:500;word-break:break-all;}
+  .contact-val a{color:var(--accent);text-decoration:none;}
+  .contact-val a:hover{text-decoration:underline;}
+  footer{background:var(--ink);color:rgba(255,255,255,0.5);text-align:center;padding:32px 2rem;font-size:13px;font-weight:300;}
+  footer strong{color:#fff;}
+  @media(max-width:600px){
+    .metrics-inner{grid-template-columns:repeat(2,1fr);}
+    .metric-item:nth-child(2){border-right:none;}
+    .metrics-grid,.skills-grid,.contact-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Harsh Kumar</span>
+  <div class="nav-links">
+    <a href="#project">Project</a>
+    <a href="#decisions">Decisions</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Product Portfolio — 2026</div>
+  <h1 class="hero-title">Building products that<br/><span>move the needle.</span></h1>
+  <p class="hero-sub">MBA in Marketing from FMS BHU. Transitioning into Product Management. I don't just analyse problems — I build solutions to them.</p>
+  <div class="hero-pills">
+    <span class="pill">Product Thinking</span>
+    <span class="pill">Automation</span>
+    <span class="pill">B2B Growth</span>
+    <span class="pill">User Research</span>
+    <span class="pill">FMS BHU MBA</span>
+  </div>
+  <div class="hero-cta">
+    <a href="#project" class="btn-primary">View Lead Engine Case Study</a>
+    <a href="#contact" class="btn-secondary">Get in touch</a>
+  </div>
+</div>
+
+<div class="metrics-strip">
+  <div class="metrics-inner">
+    <div class="metric-item"><div class="metric-num">2<span>hrs</span></div><div class="metric-label">Saved daily per consultant</div></div>
+    <div class="metric-item"><div class="metric-num">2<span>x</span></div><div class="metric-label">Outreach volume increase</div></div>
+    <div class="metric-item"><div class="metric-num">₹48<span>L</span></div><div class="metric-label">Revenue pipeline generated</div></div>
+    <div class="metric-item"><div class="metric-num">₹0</div><div class="metric-label">Additional tooling cost</div></div>
+  </div>
+</div>
+
+<section id="project">
+  <div class="section-eyebrow">Featured Project</div>
+  <h2 class="section-title">RemoteStar Lead Engine</h2>
+  <div class="project-card">
+    <div class="project-header">
+      <div>
+        <div class="project-title">Automated B2B Lead Generation Pipeline</div>
+        <div class="project-sub">Make.com · Remotive API · Apollo.io · SignalHire · Google Sheets</div>
+      </div>
+      <div class="project-badge">Live · Revenue Generated</div>
+    </div>
+    <div class="project-body">
+      <div class="psec">The Problem</div>
+      <p class="project-desc">At RemoteStar — an IT staffing firm — 50% of my working day (3–4 hours) went into manually finding companies with active tech hiring, identifying the right decision-maker, and extracting their contacts. This left fewer than 3 hours for actual selling. Unscalable, inconsistent, and entirely dependent on individual effort.</p>
+
+      <div class="psec">Pipeline Architecture</div>
+      <div class="pipeline">
+        <div class="pipe-step"><span class="pipe-num">1</span>Remotive API</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">2</span>JSON Parser</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">3</span>Apollo.io</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">4</span>SignalHire</div>
+        <div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span class="pipe-num">5</span>Google Sheets</div>
+      </div>
+      <p style="font-size:13px;color:var(--ink3);margin-bottom:24px;">Refreshes every 30 minutes. Zero manual research required.</p>
+
+      <div class="psec">Before vs After</div>
+      <div class="metrics-grid">
+        <div class="metric-card"><span class="mc-label">Daily research time</span><span class="mc-before">3–4 hours</span><span class="mc-after">~1 hour</span></div>
+        <div class="metric-card"><span class="mc-label">Outreach calls/day</span><span class="mc-before">25–30 calls</span><span class="mc-after">55–60 calls</span></div>
+        <div class="metric-card"><span class="mc-label">Leads per week</span><span class="mc-before">~125 manual</span><span class="mc-after">50+ enriched auto</span></div>
+        <div class="metric-card"><span class="mc-label">Connected conversations/day</span><span class="mc-before">18–20</span><span class="mc-after">28–30</span></div>
+      </div>
+
+      <div class="psec">Business Outcome</div>
+      <div class="outcome-box">
+        <div class="outcome-icon">🏭</div>
+        <div>
+          <div class="outcome-title">Hyderabad-based Semiconductor Company</div>
+          <div class="outcome-desc">Lead surfaced automatically in the engine sheet. Direct call placed → meeting booked → client closed. Awarded 15 contractual roles at ₹8L/month recurring revenue, with commitment to grow volume month-on-month.</div>
+          <div class="outcome-num">₹8L/month · ₹48L+ over 6 months</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="decisions">
+  <div class="section-eyebrow">Product Thinking</div>
+  <h2 class="section-title">Key Decisions Made</h2>
+  <div class="decisions">
+    <div class="decision-row"><span class="decision-tag tag-reject">Rejected</span><div class="decision-text"><strong>Rejected Apify</strong> — paid scraping tool considered for Wellfound/Cutshort. Cost unjustified at proof-of-concept stage. Principle: validate before spending.</div></div>
+    <div class="decision-row"><span class="decision-tag tag-pivot">Pivoted</span><div class="decision-text"><strong>Cutshort → Naukri → Remotive</strong> — Make.com HTTP module blocked by Cutshort and Naukri APIs. Moved to Remotive — the only free, accessible, Make-compatible job API.</div></div>
+    <div class="decision-row"><span class="decision-tag tag-pivot">Pivoted</span><div class="decision-text"><strong>LinkedIn → job board APIs</strong> — LinkedIn scraping carries legal and technical risk. Pivoted to job boards with accessible data. Faster, safer, equally effective.</div></div>
+    <div class="decision-row"><span class="decision-tag tag-focus">Focused</span><div class="decision-text"><strong>2 sources over 4</strong> — Prioritised 2 pipeline sources working end-to-end over 4 partial integrations. Shipped a working v1 and proved value before expanding.</div></div>
+    <div class="decision-row"><span class="decision-tag tag-focus">Focused</span><div class="decision-text"><strong>Role filters added</strong> — Added category filters (software-dev, devops, backend, full-stack) to improve lead relevance and reduce noise in the sheet.</div></div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="section-eyebrow">Competencies</div>
+  <h2 class="section-title">What I bring to PM</h2>
+  <div class="skills-grid">
+    <div class="skill-card"><div class="skill-icon">🔍</div><div class="skill-title">Problem Discovery</div><div class="skill-desc">Identified the real bottleneck before building anything. Validated the problem quantitatively before writing a single automation.</div></div>
+    <div class="skill-card"><div class="skill-icon">⚡</div><div class="skill-title">Fast Iteration</div><div class="skill-desc">Cycled through 3 data sources and 2 tool evaluations in weeks. Shipped a working v1 rather than a perfect v0.5.</div></div>
+    <div class="skill-card"><div class="skill-icon">📐</div><div class="skill-title">Constraint-Driven Design</div><div class="skill-desc">Built a ₹0 pipeline within existing tooling constraints. Cost discipline led to a better solution than the paid alternative.</div></div>
+    <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Metrics Orientation</div><div class="skill-desc">Defined success in numbers before building. Validated each metric post-launch — research time, call volume, lead count, revenue.</div></div>
+    <div class="skill-card"><div class="skill-icon">🤝</div><div class="skill-title">User Understanding</div><div class="skill-desc">I am the user. Every inefficiency in the manual flow was lived experience — not an assumption or a user interview.</div></div>
+    <div class="skill-card"><div class="skill-icon">🚀</div><div class="skill-title">Ownership</div><div class="skill-desc">Built this outside my job description, without being asked. Shipped it, validated it, and it generated real revenue.</div></div>
+  </div>
+  <div style="margin-top:32px;">
+    <div class="psec" style="margin-bottom:12px;">Tools & Tech</div>
+    <div class="stack-row">
+      <span class="stack-badge hl">Make.com</span>
+      <span class="stack-badge hl">Remotive API</span>
+      <span class="stack-badge hl">Apollo.io</span>
+      <span class="stack-badge hl">SignalHire</span>
+      <span class="stack-badge hl">Google Sheets</span>
+      <span class="stack-badge">SQL</span>
+      <span class="stack-badge">Power BI</span>
+      <span class="stack-badge">A/B Testing</span>
+      <span class="stack-badge">Jira</span>
+      <span class="stack-badge">Notion</span>
+      <span class="stack-badge">REST APIs</span>
+      <span class="stack-badge">JSON</span>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-eyebrow">Let's connect</div>
+  <h2 class="section-title">Open to PM opportunities</h2>
+  <div class="contact-card">
+    <p style="font-size:15px;color:var(--ink2);line-height:1.7;max-width:520px;">Looking for Product Manager roles at product-first companies. Based in India. Open to remote and hybrid.</p>
+    <div class="contact-grid">
+      <div class="contact-item"><span class="contact-label">Email</span><span class="contact-val"><a href="mailto:iharshkumar10@gmail.com">iharshkumar10@gmail.com</a></span></div>
+      <div class="contact-item"><span class="contact-label">LinkedIn</span><span class="contact-val"><a href="https://www.linkedin.com/in/harshkumar1o/" target="_blank">linkedin.com/in/harshkumar1o</a></span></div>
+      <div class="contact-item"><span class="contact-label">Mobile</span><span class="contact-val"><a href="tel:+918418046649">+91 84180 46649</a></span></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;">
+      <a href="mailto:iharshkumar10@gmail.com" class="btn-primary">Send a mail</a>
+      <a href="https://www.linkedin.com/in/harshkumar1o/" target="_blank" class="btn-secondary">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>Harsh Kumar</strong> · MBA Marketing, FMS BHU · 2026<br/>
+  <span style="font-size:12px;margin-top:6px;display:block;opacity:0.6;">Built to show product thinking, not just talk about it.</span>
+</footer>
+
+</body>
+</html>
